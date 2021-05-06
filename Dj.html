@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>PUBG Sound Kit by Bhagesh</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="keys">
+<div data-key="65" class="key">
+<kbd>A</kbd>
+<span class="sound">AKM</span>
+</div>
+<div data-key="83" class="key">
+<kbd>S</kbd>
+<span class="sound">AUG</span>
+</div>
+<div data-key="68" class="key">
+<kbd>D</kbd>
+<span class="sound">AWM</span>
+</div>
+<div data-key="70" class="key">
+<kbd>F</kbd>
+<span class="sound">FlareGun</span>
+</div>
+<div data-key="71" class="key">
+<kbd>G</kbd>
+<span class="sound">GROZA</span>
+</div>
+<div data-key="72" class="key">
+<kbd>H</kbd>
+<span class="sound">M416</span>
+</div>
+<div data-key="74" class="key">
+<kbd>J</kbd>
+<span class="sound">snare</span>
+</div>
+<div data-key="75" class="key">
+<kbd>K</kbd>
+<span class="sound">tom</span>
+</div>
+<div data-key="76" class="key">
+<kbd>L</kbd>
+<span class="sound">tink</span>
+</div>
+</div>
+<audio data-key="65" src="sounds/AKM.wav"></audio>
+<audio data-key="83" src="sounds/AUG.wav"></audio>
+<audio data-key="68" src="sounds/AWM.wav"></audio>
+<audio data-key="70" src="sounds/FlareGun.wav"></audio>
+<audio data-key="71" src="sounds/GROZA.wav"></audio>
+<audio data-key="72" src="sounds/M416.wav"></audio>
+<audio data-key="74" src="sounds/snare.wav"></audio>
+<audio data-key="75" src="sounds/tom.wav"></audio>
+<audio data-key="76" src="sounds/tink.wav"></audio>
+<script>
+function playSound(e){
+const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if(!audio) return;
+audio.currentTime = 0;
+key.classList.add('playi¬¬¬ng');
+audio.play();
+    }
+    function removeTransition(e){
+if(e.propertyName !== 'transform') return;
+this.classList.remove('playing');
+    }
+window.addEventListener('keydown',playSound);
+const keys = document.querySelectorAll(`.key`);
+keys.forEach(key =>key.addEventListener('transitionend',removeTransition));
+</script>
+</body>
+</html>
